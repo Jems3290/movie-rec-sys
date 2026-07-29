@@ -96,7 +96,7 @@ async def tmdb_get(path: str, params: Optional[Dict[str, Any]] = None) -> Dict[s
         q["api_key"] = TMDB_API_KEY
 
     try:
-        async with httpx.AsyncClient(timeout=20) as client:
+        async with httpx.AsyncClient(timeout=120) as client:
             r = await client.get(f"{TMDB_BASE}{path}", params=q)
     except httpx.RequestError as e:
         raise HTTPException(
